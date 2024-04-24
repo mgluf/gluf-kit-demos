@@ -1,0 +1,9 @@
+// Project Styles
+// Note:  not imported anywhere by default
+@import 'imports';
+
+:root {
+  --font-palatino: #{$font-palatino};
+  --font-helvetica: #{$font-helvetica};
+  --font-gfont: #{$font-gfont};
+}

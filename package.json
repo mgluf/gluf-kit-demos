@@ -1,0 +1,20 @@
+{
+  "name": "kit",
+  "version": "0.11.0",
+  "description": "Project starter for PMG4 web projects",
+  "type": "module",
+  "scripts": {
+    "dev": "export NODE_ENV=development && cayo dev",
+    "build": "export NODE_ENV=production && cayo build",
+    "clean": "rm -fr .cayo && rm -fr dist",
+    "update-cayo": "npm i cayo@latest -D"
+  },
+  "devDependencies": {
+    "@rollup/plugin-alias": "^5.0.0",
+    "@rollup/plugin-replace": "^5.0.2",
+    "cayo": "^1.2.2",
+    "chalk": "^5.2.0",
+    "sass": "^1.56.1",
+    "svelte-preprocess": "^4.10.7"
+  }
+}

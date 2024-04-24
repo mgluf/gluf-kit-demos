@@ -1,0 +1,6 @@
+// Note: anything here will be included in each Svelte component
+//       via prependData (Svelte preprocess Sass config)
+
+@import 'tokens';
+@import 'functions';
+@import 'mixins';

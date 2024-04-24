@@ -1,0 +1,63 @@
+/*
+  
+  FUNCTIONS
+  
+  Global Sass functions
+  
+*/
+
+@use "sass:list";
+@use "sass:math";
+
+// SIZING
+// ────────────────────────────────────
+
+@function unitless($number) {
+  @return math.div($number, ($number * 0 + 1));
+}
+
+// SIZING
+// ────────────────────────────────────
+
+// Convert a pixel value to rems
+@function rem($pixel-value, $base: 16) {
+  @return (math.div(unitless($pixel-value), unitless($base))) * 1rem;
+}
+
+// Scale-independent pixel (converts to rems)
+@function sp($pixel-value) {
+  @return rem($pixel-value);
+}
+
+// Min & max value utility that returns a clamped size between 
+// the min and max input values, between two breakpoints
+// NOTE: currently only supports pixel values for min and max values (but does not require units)
+@function minmax($minBreakpoint, $maxBreakpoint, $minValuePx, $maxValuePx) {
+  $minWidth: '';
+  $maxWidth: '';
+  $minValuePx: unitless($minValuePx); 
+  $maxValuePx: unitless($maxValuePx); 
+
+  // Check if the supplied min breakpoint exists in our breakpoints map
+  @if map-has-key($breakpoints, $minBreakpoint) {
+    $minWidth: unitless(map-get($breakpoints, $minBreakpoint));
+  }
+  // Value is not a defined breakpoint, but use it directly
+  @else {
+    $minWidth: unitless($minBreakpoint);
+  }
+  // Check if the supplied max breakpoint exists in our breakpoints map
+  @if map-has-key($breakpoints, $maxBreakpoint) {
+    $maxWidth: unitless(map-get($breakpoints, $maxBreakpoint));
+  }
+  // Value is not a defined breakpoint, but use it directly
+  @else {
+    $maxWidth: unitless($maxBreakpoint);
+  }
+
+  $slope: math.div($maxValuePx - $minValuePx, $maxWidth - $minWidth);
+  $yAxisIntersection: $minValuePx - $minWidth * $slope;
+
+  @return unquote("clamp(#{$minValuePx}px, calc(#{$yAxisIntersection}px + #{$slope} * 100vw), #{$maxValuePx}px)");
+}
+

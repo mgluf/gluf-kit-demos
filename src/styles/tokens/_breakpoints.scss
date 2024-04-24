@@ -1,0 +1,18 @@
+/* 
+
+  BREAKPOINTS
+
+  A map of breakpoint sizes.
+
+*/
+
+$breakpoints: (
+  xs: 0,
+  sm: 576px, // true mobile
+  md: 768px, // tablet
+  lg: 992px, // global mobile
+  xl: 1200px, // small desktop
+  xxl: 1400px, // avg desktop
+  big: 1600px, // big desktop
+  super: 2560px, // really big desktop
+);
