@@ -3,7 +3,7 @@
   import { Entry } from 'cayo';
 </script>
 
-<Entry src="variant.js"/>
+<Entry src="variant-entry.js"/>
 
 <div class="main">
   <p>kit-test-default</p>

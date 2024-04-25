@@ -8,7 +8,7 @@
   import { Entry } from 'cayo';
 </script>
 
-<Entry src="carousel.js"/>
+<Entry src="carousel-entry.js"/>
 
 <Carousel class="carousel-layout" options={data.carousel.options} hideBelow={992}>
   <div>
