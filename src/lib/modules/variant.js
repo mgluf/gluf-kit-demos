@@ -1,4 +1,4 @@
-// update the targetVariant per each variation in Convert
+// update the targetVariant for targetTest (if specified)
 export default function updateVariants(targetVariant, targetTest) {
 
   let variants = document.querySelectorAll('[data-kit-variant]')
@@ -8,7 +8,7 @@ export default function updateVariants(targetVariant, targetTest) {
     targetVariant = "control"
   }
 
-  // if no target test is provided, update targetVariant on all tests
+  // if no target test is provided, update targetVariant on all  registered tests
   if(!targetTest) {
     targetTest = "all"
   }
@@ -28,12 +28,12 @@ export default function updateVariants(targetVariant, targetTest) {
     //iterate on all Variant.svelte dom elements
     variants.forEach((variant, i) => {
 
-      // init props
+      // props
       const test = variant.dataset.kitVariantTest
       const control = variant.dataset.kitVariantControl
       const currentVariant = variant.dataset.kitVariant
       
-      // init test 
+      // test obj where `test` is the key
       if(!tests[test]) {
         tests[test] = {}
       }
@@ -91,11 +91,11 @@ export default function updateVariants(targetVariant, targetTest) {
 
         // console.log("all tests registered", tests)
 
-        // // targetTest is not provided, attempt to update all tests
+        // targetTest is not provided, attempt to update all tests
         if(targetTest === "all") {
           // console.log(`Updating All Tests to show Variant ${targetVariant}`)
           Object.keys(tests).forEach(test => {
-            // If the provided targetVariant does not exist on the test, show the control
+            // If the provided targetVariant does not exist on a test, show the control
             if(!tests[test][targetVariant]) {
               updateTest(test, "control")
             } else {
@@ -103,7 +103,7 @@ export default function updateVariants(targetVariant, targetTest) {
             }
           })
         } else {
-          // console.log(`Updating ${targetTest} to show Variant ${targetVariant}`)
+          // console.log(`Updating "${targetTest}"" to show Variant "${targetVariant}""`)
           updateTest(targetTest, targetVariant)
         }
 
