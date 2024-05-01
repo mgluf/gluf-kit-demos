@@ -42,6 +42,8 @@ export default function initCarousels() {
     // enable arrows if arrows are present
     if(prev || next && !options.arrows) {
       options.arrows = true
+    } else if(!prev && !next && !options.arrow) {
+      options.arrows = false
     }
 
     const dots = document.querySelector(`#${id} .slick-dots-entry`)

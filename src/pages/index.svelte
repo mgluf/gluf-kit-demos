@@ -9,6 +9,11 @@
       </a>
     </li>
     <li>
+      <a href="/complex/">
+        Carousel.svelte (Advanced)
+      </a>
+    </li>
+    <li>
       <a href="/variant/">
         Variant.svelte
       </a>

@@ -15,7 +15,7 @@
 
 <div 
   class={`${clazz || ''}`}
-  data-kit-slick-options={options} 
+  data-kit-slick-options={options ? options : "{}"} 
   data-kit-carousel-hide-above={hideAbove} 
   data-kit-carousel-hide-below={hideBelow}
   >
